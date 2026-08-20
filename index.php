@@ -6,7 +6,7 @@ if (chemnama_current_user()) {
     exit;
 }
 
-$home = $siteData;
+$home = chemnama_home_data($pdo);
 
 $activeStudentCount = (int) $pdo->query("SELECT COUNT(*) FROM users WHERE role = 'siswa'")->fetchColumn();
 $moduleCoreCount = (int) $pdo->query('SELECT COUNT(*) FROM modules')->fetchColumn();

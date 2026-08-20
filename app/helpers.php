@@ -15,13 +15,12 @@ function chemnama_e(?string $value): string
 
 function chemnama_home_data(PDO $pdo): array
 {
+    // Hanya tiga ini yang dipakai index.php. site_stats, featured_modules, dan
+    // knowledge_tips tidak dirender di mana pun; angka statistik dihitung live.
     return [
-        'stats' => $pdo->query('SELECT * FROM site_stats ORDER BY sort_order, id')->fetchAll(),
         'hero_updates' => $pdo->query('SELECT * FROM hero_updates ORDER BY sort_order, id')->fetchAll(),
-        'featured_modules' => $pdo->query('SELECT * FROM featured_modules ORDER BY sort_order, id')->fetchAll(),
         'modules' => $pdo->query('SELECT * FROM modules ORDER BY sort_order, id')->fetchAll(),
         'use_cases' => $pdo->query('SELECT * FROM use_cases ORDER BY sort_order, id')->fetchAll(),
-        'knowledge_tips' => $pdo->query('SELECT * FROM knowledge_tips ORDER BY sort_order, id')->fetchAll(),
     ];
 }
 
