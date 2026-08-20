@@ -74,6 +74,13 @@ function chemnama_initialize_database(PDO $pdo): void
     chemnama_migrate_quiz_sets_add_question_timer($pdo);
     chemnama_migrate_quiz_attempt_answers_selected_option_nullable($pdo);
 
+    // Harus jalan lebih dulu: seeder di bawahnya ikut mengisi tabel users,
+    // sehingga akun demo guru/siswa tidak pernah dibuat di instalasi baru.
+    $userCount = (int) $pdo->query('SELECT COUNT(*) FROM users')->fetchColumn();
+    if ($userCount === 0) {
+        chemnama_seed_database($pdo);
+    }
+
     chemnama_seed_modules_if_empty($pdo);
     chemnama_seed_materials_if_empty($pdo);
     chemnama_seed_questions_if_empty($pdo);
@@ -85,13 +92,6 @@ function chemnama_initialize_database(PDO $pdo): void
     chemnama_seed_forum_if_empty($pdo);
     chemnama_seed_demo_students_if_missing($pdo);
     chemnama_seed_demo_guru_class_if_missing($pdo);
-
-    $userCount = (int) $pdo->query('SELECT COUNT(*) FROM users')->fetchColumn();
-    if ($userCount > 0) {
-        return;
-    }
-
-    chemnama_seed_database($pdo);
 }
 
 function chemnama_migrate_essay_tasks_add_class(PDO $pdo): void
