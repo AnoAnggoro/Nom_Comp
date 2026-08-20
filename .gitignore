@@ -1,0 +1,16 @@
+# Dependency composer (pasang ulang dengan: composer install)
+/vendor/
+
+# File unggahan pengguna dan database lokal
+/storage/uploads/
+/storage/*.sqlite
+
+# Lingkungan lokal
+.env
+*.log
+
+# OS / editor
+Thumbs.db
+.DS_Store
+.vscode/
+.idea/

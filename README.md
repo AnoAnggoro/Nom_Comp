@@ -5,12 +5,13 @@ LMS tata nama senyawa berbasis PHP + MySQL (XAMPP) dengan tampilan profesional, 
 ## Cara menjalankan
 
 1. Letakkan folder project di htdocs XAMPP.
-2. Nyalakan Apache dan MySQL di XAMPP Control Panel.
-3. Buka aplikasi: http://localhost/PROJECT/web_kimia/
+2. Pasang dependency: `composer install` (folder `vendor/` tidak ikut di repo).
+3. Nyalakan Apache dan MySQL di XAMPP Control Panel.
+4. Buka aplikasi: http://localhost/PROJECT/Nom_Comp/
 
 ## Database MySQL (XAMPP)
 
-- Nama database default: chemnama_lms
+- Nama database default: nomcomp_db
 - Host default: 127.0.0.1
 - Port default: 3306
 - User default: root
