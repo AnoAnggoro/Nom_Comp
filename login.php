@@ -28,7 +28,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     } elseif (!hash_equals(chemnama_role_access_code($role), $roleCode)) {
         $error = 'Kode akses ' . chemnama_role_label($role) . ' tidak sesuai.';
     } else {
-        $statement = $pdo->prepare('SELECT * FROM user WHERE login_id = :login_id AND role = :role LIMIT 1');
+        $statement = $pdo->prepare('SELECT * FROM users WHERE login_id = :login_id AND role = :role LIMIT 1');
         $statement->execute([
             'login_id' => $loginIdValue,
             'role' => $role,

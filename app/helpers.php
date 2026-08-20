@@ -8,9 +8,9 @@ function chemnama_start_session(): void
     }
 }
 
-function chemnama_e(string $value): string
+function chemnama_e(?string $value): string
 {
-    return htmlspecialchars($value, ENT_QUOTES, 'UTF-8');
+    return htmlspecialchars((string) $value, ENT_QUOTES, 'UTF-8');
 }
 
 function chemnama_home_data(PDO $pdo): array
@@ -27,7 +27,16 @@ function chemnama_home_data(PDO $pdo): array
 
 function chemnama_current_user(): ?array
 {
-    return $_SESSION['user'] ?? null;
+    $user = $_SESSION['user'] ?? null;
+
+    // Sesi lama/rusak tanpa data wajib dianggap belum login.
+    if (!is_array($user) || !isset($user['id'], $user['name'], $user['role'])) {
+        unset($_SESSION['user']);
+
+        return null;
+    }
+
+    return $user;
 }
 
 function chemnama_is_demo_user(?array $user): bool

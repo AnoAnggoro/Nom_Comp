@@ -6,9 +6,10 @@ function chemnama_db_config(): array
     return [
         'host' => getenv('CHEMNAMA_DB_HOST') ?: '127.0.0.1',
         'port' => (int) (getenv('CHEMNAMA_DB_PORT') ?: 3306),
-        'name' => getenv('CHEMNAMA_DB_NAME') ?: 'tata_senyawa',
+        'name' => getenv('CHEMNAMA_DB_NAME') ?: 'nomcomp_db',
         'user' => getenv('CHEMNAMA_DB_USER') ?: 'root',
         'pass' => getenv('CHEMNAMA_DB_PASS') ?: '',
+        
     ];
 }
 

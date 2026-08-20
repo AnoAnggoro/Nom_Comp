@@ -5,7 +5,7 @@
 -- Tabel untuk menyimpan soal quick quiz
 CREATE TABLE IF NOT EXISTS quick_quizzes (
     id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
-    material_id BIGINT UNSIGNED NOT NULL,
+    module_id BIGINT UNSIGNED NOT NULL,
     created_by BIGINT UNSIGNED NOT NULL,
     question_text MEDIUMTEXT NOT NULL,
     image_url VARCHAR(255) NULL,
@@ -18,9 +18,9 @@ CREATE TABLE IF NOT EXISTS quick_quizzes (
     created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     PRIMARY KEY (id),
-    KEY idx_quick_quizzes_material (material_id),
+    KEY idx_quick_quizzes_module (module_id),
     KEY idx_quick_quizzes_created_by (created_by),
-    CONSTRAINT fk_quick_quizzes_material FOREIGN KEY (material_id) REFERENCES materials(id) ON DELETE CASCADE,
+    CONSTRAINT fk_quick_quizzes_module FOREIGN KEY (module_id) REFERENCES modules(id) ON DELETE CASCADE,
     CONSTRAINT fk_quick_quizzes_user FOREIGN KEY (created_by) REFERENCES users(id) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -31,6 +31,7 @@ CREATE TABLE IF NOT EXISTS quick_quiz_attempts (
     student_id BIGINT UNSIGNED NOT NULL,
     selected_option ENUM('a', 'b', 'c', 'd') NULL,
     is_correct TINYINT(1) NOT NULL DEFAULT 0,
+    score INT NULL,
     attempted_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     PRIMARY KEY (id),

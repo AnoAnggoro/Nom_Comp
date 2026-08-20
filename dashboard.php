@@ -755,7 +755,7 @@ $studentMenus = [
   ['label' => 'Dashboard', 'icon' => 'chart', 'href' => 'dashboard.php', 'active' => true],
     ['label' => 'Materi', 'icon' => 'file', 'href' => 'siswa_materi.php', 'active' => false],
     // ['label' => 'Games', 'icon' => 'beaker', 'href' => 'siswa_games.php', 'active' => false],
-    ['label' => 'Kuis PG', 'icon' => 'stack', 'href' => 'siswa_quiz.php', 'active' => false],
+    // ['label' => 'Kuis PG', 'icon' => 'stack', 'href' => 'siswa_quiz.php', 'active' => false],
     ['label' => 'Exercise', 'icon' => 'edit', 'href' => 'siswa_essay.php', 'active' => false],
     ['label' => 'Forum Diskusi', 'icon' => 'chat', 'href' => 'siswa_forum.php', 'active' => false],
     ['label' => 'Profil', 'icon' => 'user', 'href' => 'siswa_profil.php', 'active' => false],
@@ -992,7 +992,7 @@ $studentMenus = [
         </div>
 
         <div class="guru-menu-block">
-            <span class="guru-menu-title">AKUN</span>
+            <span class="guru-menu-title">NAVIGASI</span>
             <nav class="guru-menu-list">
                 <a class="guru-menu-item logout" href="logout.php">
                     <?= chemnama_icon('logout', '#ef4444'); ?>
